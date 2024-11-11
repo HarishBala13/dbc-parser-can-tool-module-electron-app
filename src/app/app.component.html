@@ -1,0 +1,54 @@
+<div class="sidebar"></div>
+
+<div style="text-align:center; margin-top: 50px;">
+  <h1>DBC File Parser</h1>
+
+  <input type="file" (change)="onFileSelected($event)" />
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <h3>DBC File Content:</h3>
+  @if(length > 1) {
+  <table border="1" [cellPadding]="10">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Length</th>
+        <th>Transmitter</th>
+        <th>Signals</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of dbcData;">
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.length}}</td>
+        <td>{{data.transmitter}}</td>
+        <td>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Signal Name</th>
+                <th>Start Bit</th>
+                <th>Bit Length</th>
+                <th>Message Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let signal of data.signals">
+                <td>{{signal.signalName}}</td>
+                <td>{{signal.startBit}}</td>
+                <td>{{signal.bitLength}}</td>
+                <td>{{signal.messageName}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  }
+  @else{
+  <div>Data Loading</div>
+  }
+</div>

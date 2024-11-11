@@ -1,0 +1,19 @@
+.sidebar {
+    width: 200px;
+    height: calc(100vh - 60px);
+    background-color: whitesmoke;
+    color: lightslategrey;
+}
+
+.sidebar .label {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .label i {
+    margin: 5px;
+}
+
+.sidebar .label p {
+    margin: 10px;
+}
